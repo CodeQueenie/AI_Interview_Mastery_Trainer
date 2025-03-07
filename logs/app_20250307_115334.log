@@ -1,0 +1,4 @@
+2025-03-07 11:53:34,665 - ai_interview_trainer - INFO - Starting AI Interview Mastery Trainer...
+2025-03-07 11:53:34,668 - ai_interview_trainer - ERROR - The following required files are missing:
+2025-03-07 11:53:34,669 - ai_interview_trainer - ERROR -   - algorithm_design_questions.py
+2025-03-07 11:53:34,670 - ai_interview_trainer - ERROR - Please make sure all required files are present before running the application.

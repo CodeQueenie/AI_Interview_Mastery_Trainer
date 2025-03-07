@@ -1,0 +1,23 @@
+2025-03-07 12:36:33,557 - ai_interview_trainer - INFO - Starting AI Interview Mastery Trainer...
+2025-03-07 12:36:33,563 - ai_interview_trainer - INFO - Database session_data/sessions.db is valid and ready to use.
+2025-03-07 12:36:33,564 - ai_interview_trainer - INFO - Launching Streamlit application...
+2025-03-07 12:36:35,152 - ai_interview_trainer - INFO - Streamlit: 
+2025-03-07 12:36:35,153 - ai_interview_trainer - INFO - Streamlit: You can now view your Streamlit app in your browser.
+2025-03-07 12:36:35,155 - ai_interview_trainer - INFO - Streamlit: 
+2025-03-07 12:36:35,156 - ai_interview_trainer - INFO - Streamlit: Local URL: http://localhost:8509
+2025-03-07 12:36:35,157 - ai_interview_trainer - INFO - Opening browser at http://localhost:8509
+2025-03-07 12:36:57,819 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 12:36:57,818 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 12:36:57,926 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 12:36:57,823 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 12:41:25,173 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 12:41:25,172 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 12:41:25,280 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 12:41:25,177 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 12:43:42,553 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 12:43:42,551 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=B, correct=B, result=True
+2025-03-07 12:43:49,246 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 12:43:49,245 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=B, correct=B, result=True
+2025-03-07 12:44:10,907 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 12:44:10,907 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=A, correct=B, result=False
+2025-03-07 12:44:18,168 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 12:44:18,167 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=A, correct=B, result=False
+2025-03-07 12:44:40,945 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 12:44:40,945 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=D, correct=D, result=True
+2025-03-07 12:52:15,799 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 12:52:15,797 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 12:52:15,901 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 12:52:15,802 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 12:59:10,413 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 12:59:10,412 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 12:59:10,586 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 12:59:10,418 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 13:16:02,699 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:16:02,695 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 13:17:38,604 - ai_interview_trainer - INFO - Shutting down the application...

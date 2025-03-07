@@ -1,0 +1,32 @@
+2025-03-07 13:18:59,348 - ai_interview_trainer - INFO - Starting AI Interview Mastery Trainer...
+2025-03-07 13:18:59,361 - ai_interview_trainer - INFO - Database session_data/sessions.db is valid and ready to use.
+2025-03-07 13:18:59,366 - ai_interview_trainer - INFO - Launching Streamlit application...
+2025-03-07 13:19:01,699 - ai_interview_trainer - INFO - Streamlit: 
+2025-03-07 13:19:01,701 - ai_interview_trainer - INFO - Streamlit: You can now view your Streamlit app in your browser.
+2025-03-07 13:19:01,705 - ai_interview_trainer - INFO - Streamlit: 
+2025-03-07 13:19:01,709 - ai_interview_trainer - INFO - Streamlit: Local URL: http://localhost:8501
+2025-03-07 13:19:01,727 - ai_interview_trainer - INFO - Opening browser at http://localhost:8501
+2025-03-07 13:19:16,516 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:19:16,516 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 13:19:16,851 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:19:16,521 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 13:24:12,177 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:24:12,176 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 13:24:12,618 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:24:12,213 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 13:28:45,749 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:28:45,749 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 13:28:45,859 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:28:45,755 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 13:32:07,737 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:32:07,736 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=B, correct=B, result=True
+2025-03-07 13:32:10,830 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:32:10,830 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=B, correct=B, result=True
+2025-03-07 13:36:45,822 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:36:45,819 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 13:36:45,926 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:36:45,827 - ai_interview_trainer.session_manager - ERROR - Error saving session: Error binding parameter 3: type 'list' is not supported
+2025-03-07 13:36:46,082 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:36:45,841 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 13:36:55,067 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:36:55,066 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 13:57:40,564 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:57:40,560 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 13:57:40,836 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:57:40,585 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 13:57:59,483 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:57:59,482 - ai_interview_trainer.session_manager - ERROR - Error saving session: Error binding parameter 3: type 'list' is not supported
+2025-03-07 13:57:59,644 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:57:59,499 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 13:58:04,796 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:58:04,795 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 13:58:16,143 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:58:16,142 - ai_interview_trainer.session_manager - ERROR - Error saving session: Error binding parameter 3: type 'list' is not supported
+2025-03-07 13:58:16,245 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:58:16,154 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 13:58:20,683 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 13:58:20,682 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 14:03:34,961 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 14:03:34,959 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 14:03:35,081 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 14:03:34,963 - ai_interview_trainer.session_manager - ERROR - Error saving session: Error binding parameter 3: type 'list' is not supported
+2025-03-07 14:03:35,272 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 14:03:34,974 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 14:03:38,932 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 14:03:38,932 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80

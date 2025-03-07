@@ -1,0 +1,11 @@
+2025-03-07 11:54:34,402 - ai_interview_trainer - INFO - Starting AI Interview Mastery Trainer...
+2025-03-07 11:54:34,406 - ai_interview_trainer - INFO - Database session_data/sessions.db is valid and ready to use.
+2025-03-07 11:54:34,407 - ai_interview_trainer - INFO - Launching Streamlit application...
+2025-03-07 11:54:35,619 - ai_interview_trainer - INFO - Streamlit: 
+2025-03-07 11:54:35,648 - ai_interview_trainer - INFO - Streamlit: You can now view your Streamlit app in your browser.
+2025-03-07 11:54:35,648 - ai_interview_trainer - INFO - Streamlit: 
+2025-03-07 11:54:35,649 - ai_interview_trainer - INFO - Streamlit: Local URL: http://localhost:8507
+2025-03-07 11:54:35,650 - ai_interview_trainer - INFO - Opening browser at http://localhost:8507
+2025-03-07 11:54:40,933 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 11:54:40,932 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 11:54:41,035 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 11:54:40,935 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:54:41,757 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 11:54:41,756 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user

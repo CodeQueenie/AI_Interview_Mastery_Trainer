@@ -1,0 +1,177 @@
+2025-03-07 10:43:08,111 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 10:43:08,122 - ai_interview_trainer.session_manager - INFO - Database connection closed
+2025-03-07 10:45:31,190 - ai_interview_trainer.session_manager - ERROR - Error saving session: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 33700 and this is thread id 57548.
+2025-03-07 10:45:31,192 - ai_interview_trainer.src.session_manager - ERROR - Exception in save_session: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 33700 and this is thread id 57548.
+Traceback (most recent call last):
+  File "C:\Users\ncole\OneDrive\Documents\CascadeProjects\AI Interview Mastery Trainer\src\session_manager.py", line 121, in save_session
+    self.cursor.execute(
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 33700 and this is thread id 57548.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ncole\OneDrive\Documents\CascadeProjects\AI Interview Mastery Trainer\src\logger.py", line 140, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ncole\OneDrive\Documents\CascadeProjects\AI Interview Mastery Trainer\src\session_manager.py", line 162, in save_session
+    self.conn.rollback()
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 33700 and this is thread id 57548.
+2025-03-07 10:45:31,205 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=5, efficiency=0, style=80
+2025-03-07 10:46:36,327 - ai_interview_trainer.session_manager - ERROR - Error closing database connection: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 33700 and this is thread id 25936.
+2025-03-07 10:46:51,630 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=5, efficiency=0, style=80
+2025-03-07 10:46:52,042 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=5, efficiency=0, style=80
+2025-03-07 10:46:52,880 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=5, efficiency=0, style=80
+2025-03-07 10:46:53,081 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=5, efficiency=0, style=80
+2025-03-07 10:46:53,356 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=5, efficiency=0, style=80
+2025-03-07 10:46:53,536 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=5, efficiency=0, style=80
+2025-03-07 10:46:53,689 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=5, efficiency=0, style=80
+2025-03-07 10:46:53,899 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=5, efficiency=0, style=80
+2025-03-07 10:46:54,312 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=5, efficiency=0, style=80
+2025-03-07 10:46:59,412 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=5, efficiency=0, style=80
+2025-03-07 10:46:59,510 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=5, efficiency=0, style=80
+2025-03-07 10:47:08,872 - ai_interview_trainer.session_manager - ERROR - Error closing database connection: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 33700 and this is thread id 65580.
+2025-03-07 10:47:20,086 - ai_interview_trainer.session_manager - ERROR - Error closing database connection: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 33700 and this is thread id 6724.
+2025-03-07 10:47:29,885 - ai_interview_trainer.session_manager - ERROR - Error closing database connection: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 33700 and this is thread id 11344.
+2025-03-07 10:47:33,211 - ai_interview_trainer.session_manager - ERROR - Error closing database connection: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 33700 and this is thread id 45852.
+2025-03-07 10:47:35,194 - ai_interview_trainer.session_manager - ERROR - Error closing database connection: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 33700 and this is thread id 6244.
+2025-03-07 10:48:42,788 - ai_interview_trainer.utils - INFO - Evaluated algorithm design with approach_score=33, pseudocode_score=20, overall_score=26
+2025-03-07 10:49:47,037 - ai_interview_trainer.utils - INFO - Evaluated algorithm design with approach_score=33, pseudocode_score=20, overall_score=26
+2025-03-07 10:49:47,051 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 10:49:47,053 - ai_interview_trainer.session_manager - INFO - Database connection closed
+2025-03-07 10:50:04,821 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 10:50:04,826 - ai_interview_trainer.session_manager - INFO - Database connection closed
+2025-03-07 10:51:25,227 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 10:51:25,234 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 10:51:50,795 - ai_interview_trainer.session_manager - ERROR - Error getting all sessions for user default_user: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 19808 and this is thread id 33668.
+2025-03-07 10:52:56,189 - ai_interview_trainer.session_manager - ERROR - Error saving session: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 19808 and this is thread id 39656.
+2025-03-07 10:52:56,192 - ai_interview_trainer.src.session_manager - ERROR - Exception in save_session: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 19808 and this is thread id 39656.
+Traceback (most recent call last):
+  File "C:\Users\ncole\OneDrive\Documents\CascadeProjects\AI Interview Mastery Trainer\src\session_manager.py", line 121, in save_session
+    self.cursor.execute(
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 19808 and this is thread id 39656.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ncole\OneDrive\Documents\CascadeProjects\AI Interview Mastery Trainer\src\logger.py", line 140, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ncole\OneDrive\Documents\CascadeProjects\AI Interview Mastery Trainer\src\session_manager.py", line 162, in save_session
+    self.conn.rollback()
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 19808 and this is thread id 39656.
+2025-03-07 10:52:56,208 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 10:57:27,985 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 10:57:27,988 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 10:57:37,282 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 10:57:42,192 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 10:58:18,111 - ai_interview_trainer.session_manager - ERROR - Error saving session: Error binding parameter 3: type 'list' is not supported
+2025-03-07 10:58:18,123 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 10:58:25,190 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 10:58:25,200 - ai_interview_trainer.session_manager - INFO - Database connection closed
+2025-03-07 11:00:21,341 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 11:00:21,344 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:00:38,194 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:00:43,648 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:01:16,387 - ai_interview_trainer.session_manager - ERROR - Error saving session: Error binding parameter 3: type 'list' is not supported
+2025-03-07 11:01:16,395 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 11:01:20,522 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 11:08:01,202 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 11:08:01,208 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:08:33,804 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:08:33,920 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:10:13,507 - ai_interview_trainer.session_manager - ERROR - Error saving session: Error binding parameter 3: type 'list' is not supported
+2025-03-07 11:10:13,538 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 11:11:10,588 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 11:11:21,629 - ai_interview_trainer.session_manager - INFO - Database connection closed
+2025-03-07 11:14:24,574 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 11:14:24,580 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:15:06,950 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=C, correct=B, result=False
+2025-03-07 11:15:16,550 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=C, correct=B, result=False
+2025-03-07 11:15:30,842 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=B, correct=B, result=True
+2025-03-07 11:15:39,407 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=B, correct=B, result=True
+2025-03-07 11:18:09,246 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 11:18:09,252 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:18:14,363 - ai_interview_trainer.session_manager - INFO - Database connection closed
+2025-03-07 11:18:18,777 - ai_interview_trainer.session_manager - ERROR - Error getting all sessions for user default_user: Cannot operate on a closed database.
+2025-03-07 11:18:19,637 - ai_interview_trainer.session_manager - INFO - Database connection closed
+2025-03-07 11:19:10,761 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 11:19:10,763 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:19:11,774 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:19:22,131 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:19:23,366 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:19:55,111 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:19:57,587 - ai_interview_trainer.session_manager - ERROR - Error saving session: Error binding parameter 3: type 'list' is not supported
+2025-03-07 11:19:57,593 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 11:20:07,450 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 11:22:47,454 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 11:22:47,461 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:22:55,117 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:27:23,574 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 11:27:23,579 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:27:24,507 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:27:48,893 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:28:16,670 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:37:54,937 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 11:37:54,941 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:37:56,108 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:38:15,215 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:40:25,800 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 11:40:25,805 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:40:26,600 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:54:40,932 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 11:54:40,935 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 11:54:41,756 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 12:08:41,936 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 12:08:41,941 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 12:08:42,947 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 12:09:56,871 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 12:11:55,298 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 12:11:55,302 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 12:19:52,039 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 12:19:52,046 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 12:35:25,271 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 12:35:55,726 - ai_interview_trainer.session_manager - ERROR - Error saving session: Error binding parameter 3: type 'list' is not supported
+2025-03-07 12:35:55,739 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 12:36:04,790 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 12:36:57,818 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 12:36:57,823 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 12:41:25,172 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 12:41:25,177 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 12:43:42,551 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=B, correct=B, result=True
+2025-03-07 12:43:49,245 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=B, correct=B, result=True
+2025-03-07 12:44:10,907 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=A, correct=B, result=False
+2025-03-07 12:44:18,167 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=A, correct=B, result=False
+2025-03-07 12:44:40,945 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=D, correct=D, result=True
+2025-03-07 12:52:15,797 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 12:52:15,802 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 12:59:10,412 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 12:59:10,418 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 13:16:02,695 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 13:19:16,516 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 13:19:16,521 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 13:24:12,176 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 13:24:12,213 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 13:28:45,749 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 13:28:45,755 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 13:32:07,736 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=B, correct=B, result=True
+2025-03-07 13:32:10,830 - ai_interview_trainer.utils - INFO - Evaluated theory answer: user=B, correct=B, result=True
+2025-03-07 13:36:45,819 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 13:36:45,827 - ai_interview_trainer.session_manager - ERROR - Error saving session: Error binding parameter 3: type 'list' is not supported
+2025-03-07 13:36:45,841 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 13:36:55,066 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 13:57:40,560 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 13:57:40,585 - ai_interview_trainer.session_manager - INFO - Retrieved 0 sessions for user default_user
+2025-03-07 13:57:59,482 - ai_interview_trainer.session_manager - ERROR - Error saving session: Error binding parameter 3: type 'list' is not supported
+2025-03-07 13:57:59,499 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 13:58:04,795 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 13:58:16,142 - ai_interview_trainer.session_manager - ERROR - Error saving session: Error binding parameter 3: type 'list' is not supported
+2025-03-07 13:58:16,154 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 13:58:20,682 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 14:03:34,959 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 14:03:34,963 - ai_interview_trainer.session_manager - ERROR - Error saving session: Error binding parameter 3: type 'list' is not supported
+2025-03-07 14:03:34,974 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 14:03:38,932 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 14:04:25,549 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 14:04:25,570 - ai_interview_trainer.session_manager - ERROR - Error saving session: Error binding parameter 3: type 'list' is not supported
+2025-03-07 14:04:25,594 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 14:04:31,816 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80

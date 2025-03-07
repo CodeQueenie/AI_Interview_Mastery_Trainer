@@ -1,0 +1,12 @@
+2025-03-07 14:03:53,411 - ai_interview_trainer - INFO - Starting AI Interview Mastery Trainer...
+2025-03-07 14:03:53,432 - ai_interview_trainer - INFO - Database session_data/sessions.db is valid and ready to use.
+2025-03-07 14:03:53,432 - ai_interview_trainer - INFO - Launching Streamlit application...
+2025-03-07 14:03:55,708 - ai_interview_trainer - INFO - Streamlit: 
+2025-03-07 14:03:55,708 - ai_interview_trainer - INFO - Streamlit: You can now view your Streamlit app in your browser.
+2025-03-07 14:03:55,709 - ai_interview_trainer - INFO - Streamlit: 
+2025-03-07 14:03:55,709 - ai_interview_trainer - INFO - Streamlit: Local URL: http://localhost:8502
+2025-03-07 14:03:55,710 - ai_interview_trainer - INFO - Opening browser at http://localhost:8502
+2025-03-07 14:04:25,550 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 14:04:25,549 - ai_interview_trainer.session_manager - INFO - Database initialized successfully
+2025-03-07 14:04:25,897 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 14:04:25,570 - ai_interview_trainer.session_manager - ERROR - Error saving session: Error binding parameter 3: type 'list' is not supported
+2025-03-07 14:04:26,249 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 14:04:25,594 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
+2025-03-07 14:04:31,816 - ai_interview_trainer - ERROR - Streamlit error: 2025-03-07 14:04:31,816 - ai_interview_trainer.utils - INFO - Evaluated coding solution with correctness=0, efficiency=0, style=80
