@@ -23,10 +23,14 @@ try:
     from data.theory_questions import THEORY_QUESTIONS
     from data.algorithm_design_questions import ALGORITHM_DESIGN_QUESTIONS
     
+    # Import study guides
+    from data.study_guides import STUDY_GUIDES
+    
     # Import utility modules
     from src.utils import evaluate_coding_solution, evaluate_theory_answer, evaluate_algorithm_design, validate_question
+    from src.utils import generate_preparation_guide, generate_question_checklist, generate_pattern_recognition_tips
     from src.visualizations import plot_category_distribution, plot_theory_performance
-    from src.dashboard import display_dashboard, display_recommendations
+    from src.dashboard import display_dashboard, display_recommendations, display_study_progress
     
     # Import session management modules
     from src.session_manager import get_session_manager, initialize_session_state
@@ -35,113 +39,221 @@ except ImportError as e:
     st.error(f"Error importing modules: {e}")
     st.stop()
 
-# =====================
-# Page Configuration
-# =====================
-st.set_page_config(
-    page_title="AI Interview Mastery Trainer",
-    page_icon="🧠",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
-
 # ===============================
-# Session State Initialization
+# Study Guide Display
 # ===============================
-def save_session_data():
+def display_study_guide(topic_category, broad_category):
     """
-    Save the current session data to the database using SessionManager.
-    """
-    try:
-        session_manager = get_session_manager()
-        session_id = session_manager.save_session(
-            st.session_state.session_history,
-            st.session_state.user_scores,
-            st.session_state.user_id
-        )
-        if session_id:
-            st.session_state.db_session_id = session_id
-            return True, session_id
-        else:
-            return False, None
-    except Exception as e:
-        st.error(f"Error saving session data: {e}")
-        return False, None
-
-def load_session_data(session_id):
-    """
-    Load session data from the database using SessionManager.
-    """
-    try:
-        session_manager = get_session_manager()
-        history, scores = session_manager.load_session(session_id)
-        if history is not None and scores is not None:
-            st.session_state.session_history = history
-            st.session_state.user_scores = scores
-            st.session_state.db_session_id = session_id
-            return True
-        else:
-            return False
-    except Exception as e:
-        st.error(f"Error loading session data: {e}")
-        return False
-
-# ===============================
-# Hints on Demand
-# ===============================
-def display_hints(hint_list):
-    """
-    Show hints one at a time, using st.session_state['hint_index'] to track progress.
-    """
-    st.subheader("Hints on Demand")
-    for i in range(st.session_state.hint_index):
-        if i < len(hint_list):
-            st.markdown(f"**Hint {i+1}:** {hint_list[i]}")
+    Display relevant study materials from study_guides.py
     
-    if st.session_state.hint_index < len(hint_list):
-        if st.button("Show Next Hint"):
-            st.session_state.hint_index += 1
-            st.rerun()
-    else:
-        st.write("No more hints available.")
-
-# ===============================
-# Leaderboard (demo)
-# ===============================
-def update_leaderboard(user, correctness, efficiency):
+    Args:
+        topic_category (str): The specific topic (e.g., "Arrays & Hashing", "Neural Networks")
+        broad_category (str): The broad category ("coding", "theory", "algorithm_design")
     """
-    Add or update user in the in-memory leaderboard with a simple weighting.
-    """
-    overall_score = (correctness * 0.7) + (efficiency * 0.3)
+    st.markdown(f"## 📚 Study Guide: {topic_category}")
     
-    found = False
-    for record in st.session_state.leaderboard:
-        if record["user"] == user:
-            record["score"] = max(record["score"], overall_score)
-            record["efficiency"] = max(record["efficiency"], efficiency)
-            found = True
-            break
+    # Try to find an exact match first
+    guide = STUDY_GUIDES.get(broad_category, {}).get(topic_category)
     
-    if not found:
-        st.session_state.leaderboard.append({
-            "user": user,
-            "score": overall_score,
-            "efficiency": efficiency
-        })
+    # If no exact match, try to find a related topic
+    if not guide:
+        for topic, content in STUDY_GUIDES.get(broad_category, {}).items():
+            if topic_category.lower() in topic.lower() or topic.lower() in topic_category.lower():
+                guide = content
+                break
+    
+    # If still no match, use the default guide for the category
+    if not guide and "default" in STUDY_GUIDES.get(broad_category, {}):
+        guide = STUDY_GUIDES[broad_category]["default"]
+    
+    # If no guide is available at all, create a custom guide based on the topic
+    if not guide:
+        # Create a custom study guide based on the topic name and category
+        if broad_category == "coding":
+            guide = create_coding_guide(topic_category)
+        elif broad_category == "theory":
+            guide = create_theory_guide(topic_category)
+        elif broad_category == "algorithm_design":
+            guide = create_algorithm_guide(topic_category)
+    
+    # Display the guide content
+    st.markdown("### 📝 Summary")
+    st.write(guide["summary"])
+    
+    if "key_points" in guide:
+        st.markdown("### 🔑 Key Points")
+        for point in guide["key_points"]:
+            st.markdown(f"- {point}")
+    
+    if "use_cases" in guide:
+        st.markdown("### 🎯 Common Use Cases")
+        st.write(", ".join(guide["use_cases"]))
+    
+    if "example" in guide:
+        st.markdown("### 💻 Example Code")
+        st.code(guide["example"], language="python")
+    
+    if "fun_fact" in guide:
+        st.markdown("### 🎉 Fun Fact")
+        st.info(guide["fun_fact"])
+    
+    # Display a pre-question checklist
+    st.markdown("### ✅ Pre-Question Checklist")
+    checklist = generate_question_checklist(broad_category)
+    for item in checklist:
+        st.markdown(f"{item}")
+    
+    # If applicable, show pattern recognition tips - FIXED to avoid nested expanders
+    if broad_category == "coding" and topic_category in ["Arrays & Hashing", "Dynamic Programming", "Graphs"]:
+        st.markdown("### 🧩 Pattern Recognition Tips")
+        pattern_tips = generate_pattern_recognition_tips(topic_category)
+        
+        # Display all pattern tips without using expanders
+        for pattern, tips in pattern_tips.items():
+            st.markdown(f"**{pattern}**")
+            st.markdown(f"*How to recognize:* {tips['recognition']}")
+            st.markdown(f"*Approach:* {tips['approach']}")
+            st.markdown(f"*Example problems:* {tips['example']}")
+            st.markdown("---")
 
-def display_leaderboard():
-    st.subheader("Leaderboard (Demo)")
-    if len(st.session_state.leaderboard) == 0:
-        st.info("No leaderboard data yet.")
-        return
-    
-    sorted_lb = sorted(st.session_state.leaderboard, key=lambda x: x["score"], reverse=True)
-    lb_df = pd.DataFrame(sorted_lb)
-    st.table(lb_df)
+def create_coding_guide(topic):
+    """Create a coding-specific study guide with practical interview strategies."""
+    return {
+        "summary": f"This guide will help you tackle {topic} coding questions effectively in interviews.",
+        "key_points": [
+            f"Break down {topic} problems into smaller, manageable steps",
+            "Start with a brute force solution, then optimize",
+            "Consider time and space complexity in your approach",
+            "Test your solution with multiple examples, including edge cases",
+            "Practice explaining your thought process clearly as you code"
+        ],
+        "use_cases": ["Technical interviews", "Whiteboard coding", "Take-home assignments"],
+        "example": f"""
+# Approach for solving {topic} problems:
+
+1. UNDERSTAND THE PROBLEM
+   - Clarify any ambiguities with the interviewer
+   - Identify input/output formats and constraints
+   - Write down test cases including edge cases
+
+2. PLAN YOUR APPROACH
+   - Consider appropriate data structures for {topic}
+   - Think about algorithmic patterns that might apply
+   - Sketch pseudocode before writing actual code
+
+3. IMPLEMENT YOUR SOLUTION
+   - Write clean, readable code
+   - Use meaningful variable names
+   - Add comments for complex logic
+
+4. TEST YOUR SOLUTION
+   - Trace through with your test cases
+   - Check edge cases (empty input, large input, etc.)
+   - Optimize if needed and explain trade-offs
+        """,
+        "fun_fact": f"In technical interviews, candidates who explain their {topic} solution process clearly are often rated higher than those who just code silently, even if both solutions work correctly!"
+    }
+
+def create_theory_guide(topic):
+    """Create a theory-specific study guide with practical interview strategies."""
+    return {
+        "summary": f"This guide will help you answer {topic} theory questions confidently in interviews.",
+        "key_points": [
+            f"Understand the core concepts of {topic} thoroughly",
+            "Be able to explain concepts in simple terms with analogies",
+            "Know the advantages, limitations, and trade-offs",
+            "Connect theoretical concepts to practical applications",
+            "Prepare for follow-up questions that test deeper understanding"
+        ],
+        "use_cases": ["Technical interviews", "System design discussions", "ML/AI role interviews"],
+        "example": f"""
+# Approach for answering {topic} theory questions:
+
+1. STRUCTURE YOUR ANSWER
+   - Start with a clear, concise definition
+   - Explain the key components or principles
+   - Provide a real-world example or application
+   - Discuss advantages and limitations
+
+2. DEMONSTRATE DEPTH
+   - Compare with alternative approaches
+   - Explain when this concept is most appropriate
+   - Discuss recent advancements if relevant
+
+3. CONNECT TO PRACTICE
+   - Explain how you've applied this concept
+   - Discuss implementation considerations
+   - Mention common pitfalls and how to avoid them
+
+4. HANDLE FOLLOW-UPS
+   - Listen carefully to follow-up questions
+   - Be honest if you don't know something
+   - Think out loud to show your reasoning process
+        """,
+        "fun_fact": f"Interviewers often ask about {topic} not just to test knowledge, but to see how you communicate complex ideas - a crucial skill for technical roles!"
+    }
+
+def create_algorithm_guide(topic):
+    """Create an algorithm design-specific study guide with practical interview strategies."""
+    return {
+        "summary": f"This guide will help you design and explain {topic} algorithms effectively in interviews.",
+        "key_points": [
+            f"Understand the problem requirements for {topic} thoroughly",
+            "Consider multiple approaches before selecting one",
+            "Analyze time and space complexity of your solution",
+            "Identify and handle edge cases and constraints",
+            "Communicate your design decisions and trade-offs clearly"
+        ],
+        "use_cases": ["System design interviews", "Algorithm optimization tasks", "ML pipeline design"],
+        "example": f"""
+# Approach for {topic} algorithm design questions:
+
+1. CLARIFY REQUIREMENTS
+   - Ask questions to understand the problem scope
+   - Identify constraints (time, memory, scalability)
+   - Define success criteria and expected outputs
+
+2. EXPLORE APPROACHES
+   - Consider multiple solutions with different trade-offs
+   - Sketch high-level designs for each approach
+   - Evaluate pros and cons of each design
+
+3. DETAIL YOUR SOLUTION
+   - Break down into components or steps
+   - Explain data flow and processing logic
+   - Discuss implementation considerations
+   - Analyze complexity (time, space, scalability)
+
+4. EVALUATE AND REFINE
+   - Test with example scenarios
+   - Identify potential bottlenecks
+   - Discuss how your solution could be improved or scaled
+        """,
+        "fun_fact": f"The best algorithm designers don't just focus on correctness - they balance multiple factors like readability, maintainability, and performance, just as you should in your {topic} solutions!"
+    }
 
 # ==================================
 # Display Logic: Coding Questions
 # ==================================
+def display_hints(hints):
+    """
+    Display a series of progressive hints to help the user solve the problem.
+    
+    Args:
+        hints (list): A list of hint strings, ordered from subtle to more direct
+    """
+    st.markdown("### 💡 Need a hint?")
+    st.markdown("*Hints are progressively more revealing. Try to solve with minimal hints!*")
+    
+    for i, hint in enumerate(hints):
+        hint_key = f"hint_{i+1}"
+        with st.expander(f"Hint {i+1}", expanded=False):
+            st.markdown(hint)
+            if i < len(hints) - 1:
+                st.caption("*Still stuck? Try the next hint for more guidance.*")
+            else:
+                st.caption("*This is the most direct hint. You've got this!*")
+
 def display_coding_question(question):
     """
     Enhanced coding question display:
@@ -154,6 +266,21 @@ def display_coding_question(question):
     st.title("🧩 Coding Round: Algorithmic Problem Solving")
     st.subheader(f"{question['title']} ({question['difficulty']})")
     st.markdown(f"*Category: {question['category']}*")
+    
+    # Study Guide Button
+    with st.expander("📚 Prepare for this question type", expanded=False):
+        st.markdown("### Review study materials before attempting the question")
+        st.markdown("Understanding the underlying concepts will help you solve the problem more effectively!")
+        
+        if st.button("📖 Review Study Guide", key=f"study_guide_btn_{question['id']}"):
+            display_study_guide(question['category'], "coding")
+    
+    # Pre-Question Checklist
+    with st.expander("✅ Pre-Question Checklist", expanded=False):
+        st.markdown("### Before you start coding, check these off:")
+        checklist = generate_question_checklist("coding")
+        for item in checklist:
+            st.markdown(f"{item}")
     
     # Collapsible problem info
     with st.expander("📝 Problem Breakdown (Click to expand)"):
@@ -342,6 +469,21 @@ def display_theory_question(question):
         st.title("🧠 Theory Round: Test Your AI Knowledge")
         st.subheader(f"Topic: {question['category']}")
         
+        # Study Guide Button
+        with st.expander("📚 Prepare for this question type", expanded=False):
+            st.markdown("### Review study materials before attempting the question")
+            st.markdown("Understanding the underlying concepts will help you solve the problem more effectively!")
+            
+            if st.button("📖 Review Study Guide", key=f"study_guide_btn_{question['id']}"):
+                display_study_guide(question['category'], "theory")
+        
+        # Pre-Question Checklist
+        with st.expander("✅ Pre-Question Checklist", expanded=False):
+            st.markdown("### Before you answer, check these off:")
+            checklist = generate_question_checklist("theory")
+            for item in checklist:
+                st.markdown(f"{item}")
+        
         # Display the question
         st.markdown(f"### Question {question['id']}")
         st.markdown(question["question"])
@@ -350,6 +492,10 @@ def display_theory_question(question):
         st.markdown("### Options")
         for option in question["options"]:
             st.markdown(f"- {option}")
+        
+        # Hints on Demand - Added to match coding questions
+        if "hints" in question:
+            display_hints(question["hints"])
         
         # Fun fact related to the category
         theory_facts = {
@@ -492,6 +638,21 @@ def display_algorithm_design_question(question):
     st.subheader(f"{question['title']} ({question['difficulty']})")
     st.markdown(f"*Category: {question['category']}*")
     
+    # Study Guide Button
+    with st.expander("📚 Prepare for this question type", expanded=False):
+        st.markdown("### Review study materials before attempting the question")
+        st.markdown("Understanding the underlying concepts will help you solve the problem more effectively!")
+        
+        if st.button("📖 Review Study Guide", key=f"study_guide_btn_{question['id']}"):
+            display_study_guide(question['category'], "algorithm_design")
+    
+    # Pre-Question Checklist
+    with st.expander("✅ Pre-Question Checklist", expanded=False):
+        st.markdown("### Before you start designing, check these off:")
+        checklist = generate_question_checklist("algorithm_design")
+        for item in checklist:
+            st.markdown(f"{item}")
+    
     # Fun design tips
     with st.expander("🧙‍♂️ Design Wizard Tips (Click for some magic)", expanded=False):
         st.markdown("""
@@ -510,17 +671,21 @@ def display_algorithm_design_question(question):
     st.markdown("### 🎯 Your Challenge")
     st.markdown(question["problem"])
     
-    # Hints section
-    st.markdown("### 💡 Helpful Hints")
-    for i, hint in enumerate(question["hints"]):
-        if i < st.session_state.hint_index + 1:
-            st.markdown(f"- {hint}")
+    # Hints section - Updated to use the display_hints function for consistency
+    if "hints" in question:
+        display_hints(question["hints"])
     
-    # Show hint button
-    if st.session_state.hint_index < len(question["hints"]) - 1:
-        if st.button("Show Next Hint"):
-            st.session_state.hint_index += 1
-            st.rerun()
+    # Remove the old hints implementation
+    # st.markdown("### 💡 Helpful Hints")
+    # for i, hint in enumerate(question["hints"]):
+    #     if i < st.session_state.hint_index + 1:
+    #         st.markdown(f"- {hint}")
+    
+    # # Show hint button
+    # if st.session_state.hint_index < len(question["hints"]) - 1:
+    #     if st.button("Show Next Hint"):
+    #         st.session_state.hint_index += 1
+    #         st.rerun()
     
     # Design approach section
     if "design_approach" in question:
@@ -702,6 +867,51 @@ def display_leaderboard_page():
     """
     st.title("🏆 Leaderboard: Top Performers")
     display_leaderboard()
+
+def display_leaderboard():
+    """
+    Display the leaderboard with top performers.
+    """
+    st.subheader("Leaderboard (Demo)")
+    
+    if 'leaderboard' not in st.session_state or len(st.session_state.leaderboard) == 0:
+        st.info("No leaderboard data yet. Complete some questions to appear on the leaderboard!")
+        return
+    
+    # Sort the leaderboard by score (descending)
+    sorted_lb = sorted(st.session_state.leaderboard, key=lambda x: x.get("score", 0), reverse=True)
+    
+    # Create a DataFrame for display
+    lb_df = pd.DataFrame(sorted_lb)
+    
+    # Format the DataFrame
+    if not lb_df.empty:
+        lb_df.columns = [col.capitalize() for col in lb_df.columns]
+        if "Score" in lb_df.columns:
+            lb_df["Score"] = lb_df["Score"].apply(lambda x: f"{x:.1f}%")
+        if "Efficiency" in lb_df.columns:
+            lb_df["Efficiency"] = lb_df["Efficiency"].apply(lambda x: f"{x:.1f}%")
+    
+    # Display the leaderboard
+    st.dataframe(lb_df, use_container_width=True)
+    
+    # Add a fun message
+    if not lb_df.empty:
+        top_user = lb_df.iloc[0]["User"] if "User" in lb_df.columns else "Anonymous"
+        st.markdown(f"🎉 Congratulations to **{top_user}** for leading the pack!")
+    
+    # Leaderboard explanation
+    with st.expander("How the leaderboard works"):
+        st.markdown("""
+        ### Leaderboard Scoring
+        
+        The leaderboard ranks users based on their performance in interview questions:
+        
+        - **Score**: Overall performance score (70% correctness, 30% efficiency)
+        - **Efficiency**: How optimal your solutions are
+        
+        Keep practicing to improve your ranking! Your best scores are always kept.
+        """)
 
 def display_progress_dashboard():
     tab1, tab2, tab3, tab4 = st.tabs(["Progress & Performance", "Recommendations", "Session Management", "Leaderboard"])
@@ -1011,11 +1221,26 @@ def main():
     st.sidebar.title("✨ Your Journey")
     category = st.sidebar.radio(
         "What would you like to practice today?",
-        ["Home", "Dashboard", "Coding", "Theory", "Algorithm Design"]
+        ["Home", "Dashboard", "Coding", "Theory", "Algorithm Design", "Study Progress"]
     )
     
     # Initialize session state if not already done
     initialize_session_state()
+    
+    # Check if we need to navigate to a study guide
+    if 'navigate_to_study_guide' in st.session_state and st.session_state.navigate_to_study_guide:
+        guide_info = st.session_state.navigate_to_study_guide
+        # Display the study guide
+        st.title(f"Study Guide: {guide_info['topic']}")
+        display_study_guide(guide_info['topic'], guide_info['category'])
+        
+        # Add a button to return to study progress
+        if st.button("← Back to Study Progress"):
+            st.session_state.navigate_to_study_guide = None
+            st.rerun()
+            
+        # Early return to prevent showing other content
+        return
     
     # Reset current question when changing categories
     if "previous_category" not in st.session_state:
@@ -1041,17 +1266,25 @@ def main():
     elif category == "Algorithm Design":
         st.session_state.current_category = "algorithm_design"
         handle_question_selection(ALGORITHM_DESIGN_QUESTIONS, "Algorithm Design Questions")
-        
+    elif category == "Study Progress":
+        st.session_state.current_category = "study_progress"
+        display_study_progress()
+    else:
+        st.error(f"Unknown page: {st.session_state.current_page}")
+
 # ===============================
 # Run the App
 # ===============================
 if __name__ == "__main__":
     try:
         main()
-    except Exception as e:
-        st.error(f"An error occurred: {e}")
-        # Attempt to close DB on crash
+    finally:
         try:
             get_session_manager().close()
         except:
             pass
+
+def display_study_progress():
+    st.title("📊 Study Progress")
+    st.markdown("### Your Study Progress")
+    st.write("This is your study progress page.")
